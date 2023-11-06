@@ -1,4 +1,4 @@
-import { FILTER_DASHBOARD } from "./types";
+import { FILTER_DASHBOARD, TOGGLE_ACCORDION } from "./types";
 
 type Action = {
   type: string;
@@ -11,6 +11,11 @@ const AppReducer = (state: any, action: Action) => {
       return {
         ...state,
         dashboardFilterType: action.payload,
+      };
+    case TOGGLE_ACCORDION:
+      return {
+        ...state,
+        openIndex: action.payload,
       };
     default:
       return state;

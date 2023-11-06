@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
 import Header from "./components/Header";
@@ -14,8 +14,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const toggleAccordion = (index: number) => {
-    if (index === openIndex) {
+  const toggleAccordion = (index: number, isOpen: boolean) => {
+    if (isOpen) {
       setOpenIndex(-1);
       return;
     }

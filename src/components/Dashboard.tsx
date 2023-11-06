@@ -14,7 +14,7 @@ type DashboardProps = {
   dashboard: TDashboard;
   isOpen: boolean;
   index: number;
-  toggleAccordion: (index: number) => void;
+  toggleAccordion: (index: number, isOpen: boolean) => void;
 };
 
 const dataCache: Partial<Record<string, DashboardData>> = {};
@@ -44,9 +44,7 @@ const Dashboard = React.memo(
       sessionStorage.setItem(dashboard.id, String(newVal));
     };
 
-    const handleToggle = useCallback(() => {
-      toggleAccordion(index);
-    }, [index, toggleAccordion]);
+    const handleToggle = () => toggleAccordion(index, isOpen);
 
     const fetchDashboardData = async (dashboardId: string) => {
       // Check if data is already in the cache
@@ -92,8 +90,6 @@ const Dashboard = React.memo(
         return dashboard.type.toUpperCase() === dashboardFilterType;
       }
     );
-
-    console.log("ListItem re-rendered", dataCache);
 
     return (
       <Accordion>

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import Select, { components } from "react-select";
 import { GlobalContext } from "../context";
 import { DashboardItemType, DashboardItemTypeEnum } from "../utils/types";
@@ -10,7 +10,7 @@ const options = [
   { value: DashboardItemTypeEnum.MAP, label: "Map" },
   { value: DashboardItemTypeEnum.VISUALIZATION, label: "Visualization" },
 ];
-const Header = () => {
+const Header = React.memo(() => {
   const { fiterDashboardType } = useContext(GlobalContext);
 
   return (
@@ -40,6 +40,6 @@ const Header = () => {
       />
     </div>
   );
-};
+});
 
 export default Header;
