@@ -1,14 +1,14 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import {
   Dashboard as TDashboard,
   DashboardData,
   DashboardItemTypeEnum,
-} from "../utils/types";
-import { Accordion, AccordionBody, AccordionHead } from "./shared/Accordion";
-import { ReactComponent as Loader } from "../icons/rolling.svg";
-import { GlobalContext } from "../context";
-import { API_URL, Icons } from "../utils/constant";
+} from "../../utils/types";
+import { Accordion, AccordionBody, AccordionHead } from "../shared/accordion";
+import { ReactComponent as Loader } from "../../icons/rolling.svg";
+import { GlobalContext } from "../../context";
+import { API_URL, Icons } from "../../utils/constant";
 
 type DashboardProps = {
   dashboard: TDashboard;
@@ -64,7 +64,6 @@ const Dashboard = React.memo(
                 ) as boolean)
               : data.starred,
           };
-
           dataCache[dashboardId] = modData;
           setDashboardDetails(modData);
           sessionStorage.setItem(data.id, String(modData.starred));
@@ -92,7 +91,7 @@ const Dashboard = React.memo(
     );
 
     return (
-      <Accordion>
+      <Accordion data-testid="dashboard">
         <AccordionHead
           starred={dashboardDetails?.starred ?? dashboard.starred}
           onStar={handleStar}
@@ -102,9 +101,9 @@ const Dashboard = React.memo(
         </AccordionHead>
         <AccordionBody isOpen={isOpen}>
           {loading ? (
-            <Loader className="h-5 w-5" />
+            <Loader data-testid="dashboard-loader" className="h-5 w-5" />
           ) : (
-            <div className="pt-3.5 pb-2">
+            <div className="pt-3.5 pb-2" data-testid="filtered-data">
               {filteredDashboards?.length ? (
                 filteredDashboards?.map((item) => {
                   const type = item.type.toLowerCase() as DashboardItemTypeEnum;

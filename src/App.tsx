@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
-import Header from "./components/Header";
-import { AccordionContainer } from "./components/shared/Accordion";
-import Dashboard from "./components/Dashboard";
+import Header from "./components/header";
+import { AccordionContainer } from "./components/shared/accordion";
+import Dashboard from "./components/dashboard";
 import { Dashboard as TDashboard } from "./utils/types";
 import { API_URL } from "./utils/constant";
 import { ReactComponent as Loader } from "./icons/rolling.svg";

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Select, { components } from "react-select";
-import { GlobalContext } from "../context";
-import { DashboardItemType, DashboardItemTypeEnum } from "../utils/types";
+import { GlobalContext } from "../../context";
+import { DashboardItemType, DashboardItemTypeEnum } from "../../utils/types";
 
 const VALUE_PREFIX = "Filter items ";
 const options = [
@@ -14,10 +14,14 @@ const Header = React.memo(() => {
   const { fiterDashboardType } = useContext(GlobalContext);
 
   return (
-    <div className="w-full flex items-center justify-between py-3 border-b border-gray-300 mb-4">
+    <div
+      data-testid="header"
+      className="w-full flex items-center justify-between py-3 border-b border-gray-300 mb-4"
+    >
       <p className="font-semibold">Dashboard</p>
 
       <Select
+        data-testid="select"
         options={options}
         defaultValue={options[0]}
         onChange={(e) =>
