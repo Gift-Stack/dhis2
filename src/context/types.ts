@@ -1,0 +1,1 @@
+export const FILTER_DASHBOARD = "FILTER_DASHBOARD";
