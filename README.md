@@ -6,6 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ```yarn test```
 
 ### Initial/Supposed implementation
+- Use TailwindCSS for styling - the DHIS2UI `@types` wasn't successfully installed via yarn; decided to use the next minimalistic framework there is!
 - Fetch the list of dashboards from the API on page load.
 - Fetch each dashboard data on click and save in a cache to avoid unnecessary endpoint(AJAX) requests.
 - Fetch the list of dashboards with the filter query on filter. (e.g.: `/api/dashboards?type=map`).
